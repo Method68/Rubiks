@@ -12,7 +12,6 @@ def findUpPos(rubiks, valuecross):
 						pos = row.index(value)
 						allupvalue.append((i, pos, value))
 				i += 1
-	allupvalue.sort()
 	return allupvalue
 
 def valueCross(finalRubiks):
@@ -30,7 +29,6 @@ def valueCross(finalRubiks):
 						valuecross.append(value)
 					j += 1
 				i += 1
-	valuecross.sort()			
 	return valuecross
 
 def moveUp(rubiks, allmovetoresolverubiks):

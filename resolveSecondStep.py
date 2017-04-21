@@ -14,7 +14,6 @@ def allRingPos(rubiks, allringvalue):
 					elif value[2] != i or value[3] != pos:
 						allringpos.append((elem, i, pos, value[1], value[2], value[3]))
 				i += 1
-	allringpos.sort()
 	return allringpos
 
 def allRingValue(finalRubiks):
@@ -27,7 +26,6 @@ def allRingValue(finalRubiks):
 					allringvalue.append((row[0], elem, i, 0))
 					allringvalue.append((row[2], elem, i, 2))
 				i += 1
-	allringvalue.sort()
 	return allringvalue
 
 def resolveRing(rubiks, finalRubiks, allringvalue, allmovetoresolverubiks):

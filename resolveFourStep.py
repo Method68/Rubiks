@@ -13,7 +13,6 @@ def findElemFinalPos(finalRubiks):
 							elemfinalpos.append((elem, i, j, value))
 						j += 1
 				i += 1
-	elemfinalpos.sort()
 	return elemfinalpos
 
 def findElemPos(rubiks, elemfinalpos):
@@ -25,7 +24,6 @@ def findElemPos(rubiks, elemfinalpos):
 					for elem1 in elemfinalpos:
 						if value in elem1:
 							findelempos.append((elem, elem1[0]))
-	findelempos.sort()
 	return findelempos
 
 def moveUp(rubiks, allmovetoresolverubiks):

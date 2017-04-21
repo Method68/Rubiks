@@ -22,8 +22,6 @@ def findFinalCornerPos(finalRubiks):
 								finalcornerpos.append((elem, i, j, value))
 							j += 1
 					i += 1
-
-	finalcornerpos.sort()
 	return finalcornerpos
 
 def firstUp(rubiks, allmovetoresolverubiks):
