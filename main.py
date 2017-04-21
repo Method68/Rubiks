@@ -23,8 +23,30 @@ def createRubiks():
 	right  = [[blue+'B1'+white,blue+'B2'+white,blue+'B3'+white], [blue+'B4'+white,blue+'B5'+white,blue+'B6'+white], [blue+'B7'+white,blue+'B8'+white,blue+'B9'+white]]
 	back   = [[black+'D1'+white,black+'D2'+white,black+'D3'+white], [black+'D4'+white,black+'D5'+white,black+'D6'+white], [black+'D7'+white,black+'D8'+white,black+'D9'+white]]
 	down   = [[orange+'O1'+white,orange+'O2'+white,orange+'O3'+white], [orange+'O4'+white,orange+'O5'+white,orange+'O6'+white], [orange+'O7'+white,orange+'O8'+white,orange+'O9'+white]]
-	rubiks = {'up': up, 'front': front, 'down': down, 'back': back, 'left': left, 'right': right}
+	rubiks = {'up': up,  'left': left, 'front': front, 'right': right, 'back': back, 'down': down}
 	return rubiks
+
+def display_line(tab1, tab2, tab3, tab4, raw):
+		i = 0
+		while (i < 3):
+			print (tab1[raw][i], end=' ')
+			i += 1
+		print ('    ', end=' ')
+		i = 0
+		while (i < 3):
+			print (tab2[raw][i], end=' ')
+			i += 1
+		print ('    ', end=' ')
+		i = 0
+		while (i < 3):
+			print (tab3[raw][i], end=' ')
+			i += 1
+		print ('    ', end=' ')
+		i = 0
+		while (i < 3):
+			print (tab4[raw][i], end=' ')
+			i += 1
+		print ('\n')
 
 def solveRubiks(rubiks, finalRubiks, allmovetoresolverubiks):
 	resolveRubiksDown(rubiks, finalRubiks, allmovetoresolverubiks)
@@ -33,24 +55,54 @@ def solveRubiks(rubiks, finalRubiks, allmovetoresolverubiks):
 	resolveFourFace(rubiks, finalRubiks, allmovetoresolverubiks)
 	resolveFiveCorner(rubiks, finalRubiks, allmovetoresolverubiks)
 	resolveFinalFace(rubiks, finalRubiks, allmovetoresolverubiks)
+	done = 0
 	for elem in rubiks:
-		print(elem)
-		for row in rubiks[elem]:
-			for value in row:
-				print(value, end=' ')
-			print('\n')
+		block = 0
+		count = 0
+		if elem == 'up' or elem == 'down':
+			for row in rubiks[elem]:
+				raw = 0
+				for value in row:
+					if ((block == 0) and raw == 0):
+						print('             ', end=' ')
+					print(value, end=' ')
+					raw += 1
+				if (block < 1 or block > 4):
+					print('\n')
+			block += 1
+		elif (done == 0):
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 0)
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 1)
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 2)
+			done = 1
+
 
 def applyCmdMove(move, rubiks):
 	allmovetoresolverubiks = []
 	allmove = move.split(' ')
 	for move in allmove:
 		rubiks = allCmdMove(move, rubiks)
+	done = 0
 	for elem in rubiks:
-		print(elem)
-		for row in rubiks[elem]:
-			for value in row:
-				print(value, end=' ')
-			print('\n')
+		block = 0
+		count = 0
+		if elem == 'up' or elem == 'down':
+			for row in rubiks[elem]:
+				raw = 0
+				for value in row:
+					if ((block == 0) and raw == 0):
+						print('             ', end=' ')
+					print(value, end=' ')
+					raw += 1
+				if (block < 1 or block > 4):
+					print('\n')
+			block += 1
+		elif (done == 0):
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 0)
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 1)
+			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 2)
+			done = 1
+
 	print("\033[91m########################################\n\033[0m")
 	finalRubiks = createRubiks()
 	solveRubiks(rubiks, finalRubiks, allmovetoresolverubiks)
