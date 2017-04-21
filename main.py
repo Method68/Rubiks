@@ -6,8 +6,8 @@ from resolveFirstStep import *
 from resolveSecondStep import *
 from resolveThirdStep import *
 from resolveFourStep import *
-from resolveFiveStep import*
-from resolveFinalStep import*
+from resolveFiveStep import *
+from resolveFinalStep import *
 
 def createRubiks():
 	red = '\033[0;30;41m'
@@ -27,8 +27,6 @@ def createRubiks():
 	return rubiks
 
 def solveRubiks(rubiks, finalRubiks, allmovetoresolverubiks):
-	i = 0
-	pos = 0
 	resolveRubiksDown(rubiks, finalRubiks, allmovetoresolverubiks)
 	resolveSecondRing(rubiks, finalRubiks, allmovetoresolverubiks)
 	resolveThirdCross(rubiks, finalRubiks, allmovetoresolverubiks)
@@ -71,9 +69,10 @@ def main(argv):
 
 if __name__ == '__main__':
 	if len(sys.argv) == 1:
-		main(None)
+		print('\033[91mBad number of argument ! ex: "R L D B F U R2 L2 D2 B2 F2 U2 R\' L\' D\' B\' F\' U\'"')
+		exit()
 	elif len(sys.argv) == 2:
 		main(sys.argv[1])
 	else:
-		print('\033[91mBad number of argument !')
+		print('\033[91mBad number of argument ! ex: "R L D B F U R2 L2 D2 B2 F2 U2 R\' L\' D\' B\' F\' U\'"')
 		exit()
