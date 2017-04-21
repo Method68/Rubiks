@@ -71,9 +71,9 @@ def solveRubiks(rubiks, finalRubiks, allmovetoresolverubiks):
 					print('\n')
 			block += 1
 		elif (done == 0):
-			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 0)
-			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 1)
-			display_line(rubiks["left"],rubiks["right"],rubiks["front"],rubiks["back"], 2)
+			display_line(rubiks["left"],rubiks["front"],rubiks["right"],rubiks["back"], 0)
+			display_line(rubiks["left"],rubiks["front"],rubiks["right"],rubiks["back"], 1)
+			display_line(rubiks["left"],rubiks["front"],rubiks["right"],rubiks["back"], 2)
 			done = 1
 
 
